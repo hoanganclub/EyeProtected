@@ -30,28 +30,28 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainForm));
-            this.chkStartUp = new System.Windows.Forms.CheckBox();
+            this.chkRunOnStartWindows = new System.Windows.Forms.CheckBox();
             this.MyNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.btnSave = new System.Windows.Forms.Button();
             this.lblTimeToLock = new System.Windows.Forms.Label();
-            this.numTimeToLock = new System.Windows.Forms.NumericUpDown();
+            this.tbxPeriodTime = new System.Windows.Forms.NumericUpDown();
             this.lblUnit = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numTimeToLock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbxPeriodTime)).BeginInit();
             this.SuspendLayout();
             // 
-            // chkStartUp
+            // chkRunOnStartWindows
             // 
-            this.chkStartUp.AutoSize = true;
-            this.chkStartUp.Checked = true;
-            this.chkStartUp.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStartUp.Location = new System.Drawing.Point(12, 37);
-            this.chkStartUp.Name = "chkStartUp";
-            this.chkStartUp.Size = new System.Drawing.Size(146, 17);
-            this.chkStartUp.TabIndex = 0;
-            this.chkStartUp.Text = "Khởi động cùng windows";
-            this.chkStartUp.UseVisualStyleBackColor = true;
+            this.chkRunOnStartWindows.AutoSize = true;
+            this.chkRunOnStartWindows.Checked = true;
+            this.chkRunOnStartWindows.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRunOnStartWindows.Location = new System.Drawing.Point(12, 37);
+            this.chkRunOnStartWindows.Name = "chkRunOnStartWindows";
+            this.chkRunOnStartWindows.Size = new System.Drawing.Size(146, 17);
+            this.chkRunOnStartWindows.TabIndex = 0;
+            this.chkRunOnStartWindows.Text = "Khởi động cùng windows";
+            this.chkRunOnStartWindows.UseVisualStyleBackColor = true;
             // 
             // MyNotifyIcon
             // 
@@ -82,28 +82,28 @@
             this.lblTimeToLock.TabIndex = 2;
             this.lblTimeToLock.Text = "Tắt màn hình mỗi khoảng thời gian";
             // 
-            // numTimeToLock
+            // tbxPeriodTime
             // 
-            this.numTimeToLock.Location = new System.Drawing.Point(189, 11);
-            this.numTimeToLock.Maximum = new decimal(new int[] {
+            this.tbxPeriodTime.Location = new System.Drawing.Point(189, 11);
+            this.tbxPeriodTime.Maximum = new decimal(new int[] {
             18000,
             0,
             0,
             0});
-            this.numTimeToLock.Minimum = new decimal(new int[] {
-            20,
+            this.tbxPeriodTime.Minimum = new decimal(new int[] {
+            11,
             0,
             0,
             0});
-            this.numTimeToLock.Name = "numTimeToLock";
-            this.numTimeToLock.Size = new System.Drawing.Size(58, 20);
-            this.numTimeToLock.TabIndex = 3;
-            this.numTimeToLock.Value = new decimal(new int[] {
+            this.tbxPeriodTime.Name = "tbxPeriodTime";
+            this.tbxPeriodTime.Size = new System.Drawing.Size(58, 20);
+            this.tbxPeriodTime.TabIndex = 3;
+            this.tbxPeriodTime.Value = new decimal(new int[] {
             90,
             0,
             0,
             0});
-            this.numTimeToLock.ValueChanged += new System.EventHandler(this.numTimeToLock_ValueChanged);
+            this.tbxPeriodTime.ValueChanged += new System.EventHandler(this.tbxPeriodTime_ValueChanged);
             // 
             // lblUnit
             // 
@@ -140,10 +140,10 @@
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblUnit);
-            this.Controls.Add(this.numTimeToLock);
+            this.Controls.Add(this.tbxPeriodTime);
             this.Controls.Add(this.lblTimeToLock);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.chkStartUp);
+            this.Controls.Add(this.chkRunOnStartWindows);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -153,7 +153,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainForm_FormClosing);
             this.Load += new System.EventHandler(this.frmMainForm_Load);
             this.Resize += new System.EventHandler(this.frmMainForm_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.numTimeToLock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbxPeriodTime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,11 +161,11 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox chkStartUp;
+        private System.Windows.Forms.CheckBox chkRunOnStartWindows;
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblTimeToLock;
-        private System.Windows.Forms.NumericUpDown numTimeToLock;
+        private System.Windows.Forms.NumericUpDown tbxPeriodTime;
         private System.Windows.Forms.Label lblUnit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblVersion;

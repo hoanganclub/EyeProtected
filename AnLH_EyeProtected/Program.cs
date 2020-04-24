@@ -8,7 +8,6 @@ namespace AnLH_EyeProtected
         [STAThread]
         static void Main()
         {
-          
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMainForm());
