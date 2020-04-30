@@ -121,6 +121,20 @@ namespace AnLH_EyeProtected
             }
             catch { }
         }
+        private void CloseCurrentInstanceIfExist()
+        {
+            try
+            {
+                string currentProcess = System.Diagnostics.Process.GetCurrentProcess().ProcessName;
+                System.Diagnostics.Process[] procs;
+                procs = System.Diagnostics.Process.GetProcessesByName(currentProcess);
+                if (procs.Length >= 2)
+                {
+                    Application.ExitThread();
+                }
+            }
+            catch { }
+        }
 
         private void frmMainForm_Load(object sender, EventArgs e)
         {
@@ -139,22 +153,9 @@ namespace AnLH_EyeProtected
                     string thisCurrentAppPath = Application.ExecutablePath.ToString();
                     string savedAppPath = RegistryHelper.ReadFromAutoRunOnStartWindwosRegistry(ApplicationName);
 
-                    if (applicationVersion.ToUpper().Trim() == GetCurrentApplicationVersion().ToUpper().Trim())
-                    {
+                   
+                    OpenNewInstance(applicationVersion, savedAppPath, thisCurrentAppPath);
 
-                        if (savedAppPath == thisCurrentAppPath)
-                        {
-                            _isFirstTime = false;
-                            this.WindowState = FormWindowState.Minimized;
-                        }
-                        else
-                        {
-                            _isFirstTime = false;
-                            MessageBox.Show("File bạn mở có đường dẫn khác với đường dãn file trước kia, Nếu bạn muốn sử dụng đường dẫn hiện tại vui lòng nhấn \"Lưu lại\"", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-
-                    OpenNewInstance(applicationVersion, savedAppPath);
                     InitCounter(periodTime);
                 }
 
@@ -163,15 +164,22 @@ namespace AnLH_EyeProtected
             lblVersion.Text = GetCurrentApplicationVersion().ToUpper().Trim();
         }
 
-        private void OpenNewInstance(string applicationVersion, string savedAppPath)
+        private void OpenNewInstance(string applicationVersion, string savedAppPath, string currentAppPath)
         {
-
-            string currentAppPath = Application.ExecutablePath.ToString().ToLower();
-            if (applicationVersion.ToUpper().Trim() == GetCurrentApplicationVersion().ToUpper().Trim() && currentAppPath == savedAppPath.ToLower())
+            if (applicationVersion.ToUpper().Trim() == GetCurrentApplicationVersion().ToUpper().Trim())
             {
-                _isFirstTime = false;
-                Application.Exit();
-                return;
+
+                if (savedAppPath == currentAppPath)
+                {
+                    CloseCurrentInstanceIfExist();
+                    _isFirstTime = false;
+                    this.WindowState = FormWindowState.Minimized;
+                }
+                else
+                {
+                    _isFirstTime = false;
+                    MessageBox.Show("File bạn mở có đường dẫn khác với đường dãn file trước kia, Nếu bạn muốn sử dụng đường dẫn hiện tại vui lòng nhấn \"Lưu lại\"", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
